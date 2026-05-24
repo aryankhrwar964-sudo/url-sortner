@@ -6,9 +6,11 @@ public class step1{
     public static void main(String[] args) {
         HashMap<String,String> map = new HashMap<>();
         String chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a URL");
+
+        while(true){
+            
+            System.out.println("Enter a URL");
         String url = sc.next();
 
         Random random = new Random();
@@ -24,16 +26,26 @@ public class step1{
 
         System.out.println("Enter the code ");
         String code2 = sc.next();
-        int flag = 1;
-        for(Map.Entry<String,String> entry : map.entrySet()){
-            if(entry.getKey().equals(code2)){
-                 System.out.println(entry.getValue());
-                 flag = 0;
-                 break;
+        String url2 = map.get(code2);
+        if(url2 != null){
+            System.out.println(url2);
+        }else{
+            System.out.println("Invalid code");
+        }
+        System.out.println("Enter the coice '0' or '1' ");
+        System.out.println("Show all URL click '5'");
+        int coice = sc.nextInt();
+        if(coice == 0){
+            break;
+        }
+        else if(coice == 5){
+            for(Map.Entry<String,String> entry : map.entrySet()){
+                System.out.println(entry.getKey() +"->"+ entry.getValue());
             }
+            continue;
+        }else{
+            continue;
         }
-        if(flag == 1){
-            System.out.println("invalid code ");
-        }
+    }
     }
 }
